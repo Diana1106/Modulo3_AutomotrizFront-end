@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row"  style="padding: 30px 0px 30px 0px">
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-head">
+                <i class="fa-light fa-user-gear fa-xl"></i>
+                    <div style="text-align: center;">
+                        <label for="">Crear Tarea</label>
+                    </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <form [formGroup]='tareaGuardada'>
+                            <div class="form-group">
+                                <input formControlName="nombre" type="text"  placeholder="Insertar Tarea">
+                            </div>
+                            <button (click)="guardarTarea()" class="btn btn-success mt-3">Guardar Tarea</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <label for="">Cantidad: </label>
+                <label for="">&nbsp;{{idTareas}}</label>
+            </div>
+        </div>
+    </div>
+            
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-head">
+                        <i class="fa-light fa-user-gear fa-xl"></i>
+                            <div style="text-align: center;">
+                                <label for="">Asignación de Tareas</label>
+                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <form [formGroup]='guardarAll'>
+                                    <div class="form-group">
+                                        <input formControlName="nombre" type="text" id="txt_nom_persona" placeholder="Nombre" required class="form-control">
+                                    </div>
+                                    
+                                    <div class="form-group pt-3">
+                                        <label for="">Lista de Tareas</label>
+                                        <select class="form-select" formControlName="tareas">
+                                            <option *ngFor="let lista of listaTareas" [value]="lista.id">{{ lista.tareas }}</option>
+                                          </select>
+                                          
+                                    </div>
+                                    <button (click) ="guardarTodo()" class="btn btn-success mt-3">Asignar Tarea</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="container">
+    <div class="card">
+        <div class="card-body">
+            
+                <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">PERSONA</th>
+                            <th scope="col">TAREA</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let lista of listaDetalles">
+                          <tr>
+                            <td>{{lista.id}}</td>
+                            <td>{{lista.personas.nombre}}</td>
+                            <td>{{lista.tareas.tareas}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-1"></div>
+</div>
